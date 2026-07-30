@@ -76,4 +76,18 @@ public class Fare {
 
     @UpdateTimestamp
     private Instant updatedAt;
+
+    public Double getTotalPrice(){
+        double total = 0.0;
+        if (baseFare != null) {
+            total += baseFare;
+        }
+        if (taxesAndFees != null) {
+            total += taxesAndFees;
+        }
+        if (airlineFees != null) {
+            total += airlineFees;
+        }
+        return total;
+    }
 }
