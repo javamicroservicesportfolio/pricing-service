@@ -5,6 +5,7 @@ import com.portfolio.payload.request.FareRequest;
 import com.portfolio.payload.response.FareResponse;
 import com.portfolio.pricingservice.model.Fare;
 
+
 public class FareMapper {
     public static Fare toEntity(FareRequest fareRequest) {
 
@@ -102,10 +103,9 @@ public class FareMapper {
                 .fullRefund(fare.getFlexibilityBenefits().getFullRefund())
                 .loungeAccess(fare.getPremiumServiceBenefits().getLoungeAccess())
                 .airportTransfer(fare.getPremiumServiceBenefits().getAirportTransfer())
-                // To do, watch fare rules and baggage policy
-                //.fareRulesId(fare.getFareRulesId())
-                //.fareRules(fare.getFareRules())
-                //.baggagePolicy(fare.getBaggagePolicy())
+                .fareRulesId(fare.getFareRules().getId())
+                .fareRules(FareRulesMapper.toResponse(fare.getFareRules()))
+                .baggagePolicy(BaggagePolicyMapper.toResponse(fare.getBaggagePolicy()))
                 .createdAt(fare.getCreatedAt())
                 .updatedAt(fare.getUpdatedAt())
                 .build();
